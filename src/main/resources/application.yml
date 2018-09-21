@@ -1,0 +1,19 @@
+security:
+  basic:
+    enabled: false
+
+management:
+  security:
+    enabled: false
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ppr
+    username: postgres
+    password:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate.temp.use_jdbc_metadata_defaults: false
+  profiles:
+    active: default
