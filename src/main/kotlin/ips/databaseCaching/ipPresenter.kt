@@ -14,7 +14,8 @@ class ipPresenter(val iprepo: ipRepo) {
 
     @Override
     fun putIp(ipaddress: String): IP? {
-        val ipobject: IP = IP(3, ipaddress)
+
+        val ipobject: IP? = IP(Math.random().toInt(), ipaddress)
         val obj:IP? = iprepo.save(ipobject)
         return obj
     }

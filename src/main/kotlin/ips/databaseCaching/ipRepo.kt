@@ -19,8 +19,10 @@ interface ipRepo:CrudRepository<IP, Int> {
 data class IP(
     @Id
     @Column(name="id")
-    val id: Int? = null,
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    val id: Int = 0 ,
 
     @Column(name="ipadd")
-    val ipadd: String
+    val ipadd: String = ""
+
 )
