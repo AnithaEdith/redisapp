@@ -2,7 +2,7 @@ buildscript {
     ext {
         kotlinVersion = '1.2.41'
         springBootVersion = '2.0.2.RELEASE'
-        postgresDriverVersion = '42.2.1'
+      //  postgresDriverVersion = '42.2.1'
     }
     repositories {
         mavenCentral()
@@ -42,8 +42,10 @@ dependencies {
     compile('com.fasterxml.jackson.module:jackson-module-kotlin')
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     compile("org.jetbrains.kotlin:kotlin-reflect")
-    compile("org.postgresql:postgresql:${postgresDriverVersion}")
-    compile("com.vladmihalcea:hibernate-types-52:2.1.1")
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.12'
+
+//    compile("org.postgresql:postgresql:${postgresDriverVersion}")
+//   compile("com.vladmihalcea:hibernate-types-52:2.1.1")
     compile("commons-io:commons-io:2.6")
     compile group: 'org.apache.httpcomponents', name: 'httpclient'
     testCompile('org.springframework.boot:spring-boot-starter-test')

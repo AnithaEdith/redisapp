@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/redisapp.iml" filepath="$PROJECT_DIR$/.idea/modules/redisapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/redisapp.iml" filepath="$PROJECT_DIR$/redisapp.iml" />
     </modules>
   </component>
 </project>

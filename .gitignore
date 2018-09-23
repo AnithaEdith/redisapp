@@ -1,7 +1,7 @@
-.gradle
+.gradle/
 !gradle/wrapper/gradle-wrapper.jar
-/**/build/
-.idea
+build/
+.idea/
 *.iws
 *.iml
 *.ipr

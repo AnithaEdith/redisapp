@@ -15,6 +15,7 @@ interface ipRepo:CrudRepository<IP, Int> {
 }
 
 @Entity
+@Table(name = "IP")
 data class IP(
     @Id
     @Column(name="id")

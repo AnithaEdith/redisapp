@@ -13,13 +13,14 @@ class dbController(
 ) {
     @GetMapping("/api/db/{ip}")
     fun getPlan(@PathVariable ip: String): String {
-        println(ipresenter.getByIp(ip)?.id)
-        return "ipgetplan"
+        val storedIp = ipresenter.getByIp(ip)?.id
+        println(storedIp)
+        return "ip is " + storedIp
     }
 
     @GetMapping("/api/db/save/{ip}")
     fun savePlan(@PathVariable ip: String): String {
         ipresenter.putIp(ip)
-        return "ipputplan"
+        return "ip is stored" + ip
     }
 }

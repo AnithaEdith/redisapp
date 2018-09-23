@@ -1,0 +1,35 @@
+cf create-service aws-rds-postgres basic pprdb1
+cf cs p-redis  dedicated-vm ppr-redis
+
+cf cs p.redis cache-small ppr-redis
+
+
+C:\Users\Anitha Edith>cf m
+Getting services from marketplace in org aedith-PAL-JAN8 / space qa as anitha.edith@cognizant.com...
+OK
+
+service                       plans                                      description
+MongoDB-anit                  standard                                   A simple MongoDB service broker implementation
+app-autoscaler                standard                                   Scales bound applications in response to load (beta)
+aws-dynamodb                  standard*                                  Create and manage Amazon DynamoDB tables
+aws-rds-aurora                basic*, standard*, premium*, enterprise*   Create and manage Amazon RDS Aurora deployments
+aws-rds-mariadb               basic*, standard*, premium*, enterprise*   Create and manage Amazon RDS MariaDB deployments
+aws-rds-mysql                 basic*, standard*, premium*, enterprise*   Create and manage Amazon RDS MySQL deployments
+aws-rds-oracle                basic*, standard*, premium*, enterprise*   Create and manage Amazon RDS Oracle deployments
+aws-rds-postgres              basic*, standard*, premium*, enterprise*   Create and manage Amazon RDS PostgreSQL deployments
+aws-rds-sqlserver             basic*, standard*, premium*, enterprise*   Create and manage Amazon RDS SQL Server deployments
+aws-s3                        standard*                                  Create and manage Amazon S3 buckets
+aws-sqs                       standard*                                  Create and manage Amazon SQS queues
+p-circuit-breaker-dashboard   standard                                   Circuit Breaker Dashboard for Spring Cloud Applications
+p-config-server               standard                                   Config Server for Spring Cloud Applications
+p-mysql                       100mb                                      MySQL databases on demand
+p-rabbitmq                    standard                                   RabbitMQ is a robust and scalable high-performance multi-protocol messaging broker.
+p-redis                       dedicated-vm, shared-vm                    Redis service to provide pre-provisioned instances configured as a datastore, running on a shared or dedicated VM.
+p-service-registry            standard                                   Service Registry for Spring Cloud Applications
+p.redis                       cache-small, cache-medium, cache-large     Redis service to provide on-demand dedicated instances configured as a cache.
+
+* These service plans have an associated cost. Creating a service instance will incur this cost.
+
+TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans of a given service.
+
+

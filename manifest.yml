@@ -5,4 +5,4 @@ applications:
   path: build/libs/redisapp-1.0-SNAPSHOT.jar
   services:
     - ppr-redis
-    - pprdb1
+    - pprdb2
