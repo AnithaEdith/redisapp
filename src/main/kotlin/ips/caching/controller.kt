@@ -15,10 +15,14 @@ import org.redisson.api.RedissonClient
 import org.redisson.api.LocalCachedMapOptions
 import org.bouncycastle.crypto.tls.ConnectionEnd.client
 import org.jboss.logging.MDC.getMap
+import org.redisson.Redisson
 import org.redisson.api.RMap
+import org.redisson.config.Config
 
 @RestController
-class HelloController {
+class HelloController(
+        private val redissonClient: RedissonClient
+) {
 
   /*  @Autowired
     private val template: RedisTemplate<String, String>? = null
@@ -26,18 +30,28 @@ class HelloController {
     @Autowired
     private val stringRedisTemplate: StringRedisTemplate? = null*/
 
-    @Autowired
-    private val redissonClient: RedissonClient? = null
 
    // private var hashOperations: HashOperations<String, String, Long>? = null
 
     var options = LocalCachedMapOptions.defaults().maxIdle((10 * 1000).toLong()).timeToLive((10 * 1000).toLong())
     var map: RMap<String?, String?>? = redissonClient?.getMap("myredisCache")
 
-
     @GetMapping("/hello")
     fun helloKotlin(): String {
         return "hello world"
+    }
+
+
+    @GetMapping("/redisclientdetail")
+    fun redisclientdetail(): String {
+        val config: Config? = redissonClient?.config
+        return config?.useReplicatedServers()?.nodeAddresses.toString()
+    }
+
+    @GetMapping("/redissingle")
+    fun redissingle(): String {
+        val config: Config? = redissonClient?.config
+        return config?.useSingleServer()?.address.toString()
     }
 
 
@@ -46,14 +60,21 @@ class HelloController {
         return "hello world" + name
     }
 
-    @GetMapping("/get/{cacheitem}")
+    @GetMapping("/set/{cacheitem}")
     fun setCache(@PathVariable("cacheitem") cacheitem: String?): String? {
         println("before pushing to cache")
-        map?.get(cacheitem)
+        map?.set(cacheitem, "value" + cacheitem)
         println("pushed to cache" + map?.get(cacheitem))
         return cacheitem
     }
 
+    @GetMapping("/get/{cacheitem}")
+    fun getCache(@PathVariable("cacheitem") cacheitem: String?): String? {
+        println("before getting from cache")
+        map?.get(cacheitem)
+        println("cache item is " + map?.get(cacheitem))
+        return cacheitem
+    }
 
 /*
     @GetMapping("/set/{cacheitem}")

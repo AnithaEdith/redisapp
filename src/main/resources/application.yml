@@ -9,12 +9,3 @@ management:
 spring:
   application:
     name: redisapp
-  jpa:
-    properties:
-      hibernate.temp.use_jdbc_metadata_defaults: false
-  datasource:
-    url: jdbc:postgresql://localhost:5432/ppr
-    username: postgres
-    password:
-    driver-class-name: org.postgresql.Driver
-

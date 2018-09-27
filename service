@@ -1,8 +1,10 @@
 cf create-service aws-rds-postgres basic pprdb1
 cf cs p-redis  dedicated-vm ppr-redis
+cf create-service aws-rds-mysql basic pprdb2
 
 cf cs p.redis cache-small ppr-redis
-
+cf delete redisapp
+cf ds ppr-redis
 
 C:\Users\Anitha Edith>cf m
 Getting services from marketplace in org aedith-PAL-JAN8 / space qa as anitha.edith@cognizant.com...
@@ -31,5 +33,7 @@ p.redis                       cache-small, cache-medium, cache-large     Redis s
 * These service plans have an associated cost. Creating a service instance will incur this cost.
 
 TIP:  Use 'cf marketplace -s SERVICE' to view descriptions of individual plans of a given service.
+
+
 
 
