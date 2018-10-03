@@ -1,28 +1,33 @@
 package ips.databaseCaching
 
+import org.springframework.data.repository.CrudRepository
+import org.springframework.stereotype.Repository
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.persistence.SequenceGenerator
 import javax.persistence.Table
-import org.springframework.data.repository.CrudRepository
-import org.springframework.stereotype.Repository
 
 @Repository
-interface ipRepo:CrudRepository<IP, Int> {
+interface ipRepo:CrudRepository<IP, Long> {
     fun findByIpadd(code: String): IP?
 }
 
 @Entity
-@Table(name = "IP")
-data class IP(
+data class IP (
+
     @Id
-    @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: Int = 0 ,
+    @GeneratedValue(generator = "id_generator")
+    @SequenceGenerator(
+            name = "id_generator",
+            sequenceName = "id_sequence",
+            initialValue = 1000
+    )
+    val id: Long? = null,
 
     @Column(name="ipadd")
-    val ipadd: String = ""
+    var ipadd: String = ""
 
 )

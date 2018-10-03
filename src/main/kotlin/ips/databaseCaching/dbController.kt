@@ -15,12 +15,20 @@ class dbController(
     fun getPlan(@PathVariable ip: String): String {
         val storedIp = ipresenter.getByIp(ip)?.id
         println(storedIp)
-        return "ip is " + storedIp
+        return "Retrieved ip from Database is " + storedIp + "\t"
     }
 
     @GetMapping("/api/db/save/{ip}")
     fun savePlan(@PathVariable ip: String): String {
-        ipresenter.putIp(ip)
-        return "ip is stored" + ip
+        if(ipresenter.getByIp(ip)?.id!!.equals(null)) {
+            ipresenter.putIp(ip)
+        }
+        return "ip is stored in Database" + ip + "\t"
+    }
+
+    @GetMapping("/api/db/delete")
+    fun deleteall(): String {
+        ipresenter.delete()
+        return "deleted entries from db"
     }
 }

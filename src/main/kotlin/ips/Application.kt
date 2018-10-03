@@ -18,24 +18,3 @@ class Application
 fun main(args: Array<String>) {
     SpringApplication.run(Application::class.java, *args)
 }
-
-/*
-@Bean
-@Profile("dev")
-fun jedisConnectionFactory(): RedisConnectionFactory {
-    val factory = JedisConnectionFactory()
-    factory.hostName = "127.0.0.1"
-    factory.port = 6379
-    factory.usePool = true
-    return factory
-}
-
-@Bean
-@Profile("dev", "default")
-fun redissonClient(): RedissonClient  {
-    val config = Config()
-    val hostUri = "rediss://127.0.0.1:6379"
-    config.useReplicatedServers().addNodeAddress(hostUri)
-    val client = Redisson.create(config)
-    return client
-}*/
